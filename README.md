@@ -1,5 +1,5 @@
 
-XBT_Trnasect – XBT Temperature Profile Cleaning
+XBT_Transect – XBT Temperature Profile Cleaning
 
 This repository contains robust quality control (QC), cleaning routines, and visualizations for Expendable Bathythermograph (XBT) data collected along the AX08 transect.
 
