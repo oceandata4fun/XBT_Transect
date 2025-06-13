@@ -1,11 +1,23 @@
 
-AX08 Project – XBT Temperature Profile Cleaning
+XBT_Trnasect – XBT Temperature Profile Cleaning
 
 This repository contains robust quality control (QC), cleaning routines, and visualizations for Expendable Bathythermograph (XBT) data collected along the AX08 transect.
 
+## Update: Improved Cleaning Procedure (June 2025)
+
+We updated the XBT profile cleaning procedure to reduce overly aggressive filtering.
+
+**Key improvements:**
+- Adjusted thresholds for temperature flat segments and deep temperature clipping
+- Improved filtering logic for `remove_long_constant_temp`, `remove_flat_segments`, and `bottom_temp_spike`
+- Increased cleaned profiles from ~207 to 491 (out of 517 total), while retaining quality
+
+All figures have been regenerated using the new cleaning pipeline.
+
+See updated visuals in `/figures` and cleaned profiles in `/cleaned_profiles`
 ---
 
-## 🧪 What This Project Does
+## What This Project Does
 
 - Cleans 500+ raw AX08 XBT profiles using custom filtering routines  
 - Removes artifacts like bottom-strike, sensor noise, and surface inversions  
@@ -15,21 +27,20 @@ This repository contains robust quality control (QC), cleaning routines, and vis
 
 ---
 
-## 📂 Project Structure 
+## Project Structure 
 
 
 AX08_Project/
 ├── cleaned_profiles/         # CSVs of cleaned XBT profiles & metadata
-├── figures/                  # Saved PNG plots (MLD, gradients, etc.)
+├── figures                   # Saved PNG plots (MLD, gradients, etc.)
 ├── AX08_profiles.ipynb       # Main analysis and cleaning notebook
-├── Logs, summary and report/ # Supporting materials
 ├── EP2022-1825.pdf           # Expedition documentation
 ├── README.md
 └── .gitignore
 
 ---
 
-## 🔧 Cleaning & QC Methods
+## Cleaning & QC Methods
 
 Cleaning logic aligns with accepted oceanographic QC practices and includes:
 
@@ -48,14 +59,14 @@ All filters are implemented in the `clean_profile()` function in the notebook.
 
 ---
 
-## 🔍 Data Source
+## Data Source
 
 Raw profiles were obtained from NOAA's publicly available XBT archives:  
-🌐 https://www.aoml.noaa.gov/phod/xbt.html
+https://www.aoml.noaa.gov/phod/xbt.html
 
 ---
 
-## 🧼 Cleaned Profiles
+## Cleaned Profiles
 
 Only profiles that pass all QC criteria are retained. This includes:
 
@@ -64,12 +75,12 @@ Only profiles that pass all QC criteria are retained. This includes:
 - Valid vertical resolution and depth coverage  
 - Removal of sensor artifacts (e.g., below 800 m)
 
-📁 Output files are saved to [`cleaned_profiles/`](cleaned_profiles/).  
-🖼️ PNG plots of MLD, thermoclines, and gradients are saved to [`figures/`](figures/).
+Output files are saved to [`cleaned_profiles/`](cleaned_profiles/).  
+PNG plots of MLD, thermoclines, and gradients are saved to [`figures/`](figures/).
 
 ---
 
-## 📊 Example Plots
+## Example Plots
 
 - **Mixed Layer Depth vs Latitude**  
 - **Thermocline Depth vs Latitude**  
@@ -80,13 +91,13 @@ These are saved automatically during the notebook run.
 
 ---
 
-## 🚧 Known Limitations
+## Known Limitations
 
 Some edge cases — like extreme coastal gradients, partial drops, or unusual thermal structures — may be excluded. Profiles deeper than 800 m are handled more leniently due to common noise at depth.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 To run the full pipeline:
 
@@ -97,6 +108,6 @@ jupyter lab AX08_profiles.ipynb
 👤 Author
 
 Alistair Blair
-🌍 github.com/oceandata4fun
+github.com/oceandata4fun
 💬 Feedback and contributions are welcome!
 
